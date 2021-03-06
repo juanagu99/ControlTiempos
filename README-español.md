@@ -1,6 +1,6 @@
-# Título del Proyecto
+# Control de tiempos
 
-_Acá va un párrafo que describa lo que es el proyecto_
+_Este proyecto es creado con fines educativos, con el fin de estructurar un proyecto y que cualquier persona pueda iniciar su app muy facilmente_
 
 ## Comenzando 🚀
 
@@ -19,18 +19,16 @@ Da un ejemplo
 
 ### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
+_Debes de iniciar clonando este repositorio de la siguiente manera:_
 
 ```
-Da un ejemplo
+git clone https://github.com/juanagu99/ControlTiempos.git
 ```
 
-_Y repite_
+_Debes de ir al archivo .env y colocar el id de tu web client de google_
 
 ```
-hasta finalizar
+50916202111-gd5edp39b38qgqpq5p4jpa56p5fdr0qg.apps.googleusercontent.com
 ```
 
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
@@ -99,7 +97,5 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 * Da las gracias públicamente 🤓.
 * etc.
 
-
-
 ---
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+⌨️ con ❤️ por [juanagu99](https://github.com/juanagu99) 😊
