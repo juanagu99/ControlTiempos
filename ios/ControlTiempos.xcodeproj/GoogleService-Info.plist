@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>50916202111-alj0p8geumto06358q7hr27bvine8gjc.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.50916202111-alj0p8geumto06358q7hr27bvine8gjc</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBe1DmaeiuY1_9X6kMP76ffIyhTt21mm78</string>
+	<key>GCM_SENDER_ID</key>
+	<string>50916202111</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.controltiempos</string>
+	<key>PROJECT_ID</key>
+	<string>controltiempos-ad388</string>
+	<key>STORAGE_BUCKET</key>
+	<string>controltiempos-ad388.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:50916202111:ios:95652369ce6caa3db1114a</string>
+</dict>
+</plist>
