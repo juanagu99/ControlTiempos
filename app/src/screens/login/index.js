@@ -198,7 +198,7 @@ export default ({navigation}) =>  {
                       color: colors.text
                   }]}
                   autoCapitalize="none"
-                  //onChangeText={(val) => handlePasswordChange(val)}
+                  onChangeText={(val) => handleChangePassword(val)}
               />
               <TouchableOpacity
                   onPress={ () => OnPresSecureTextEntry() }
@@ -225,20 +225,20 @@ export default ({navigation}) =>  {
 
               <TouchableOpacity
                   style={styles.signIn}
-                  onPress={() => {/*oginHandle( data.username, data.password )*/}}
+                  onPress={() => {OnPressSignIn()}}
               >
-              <LinearGradient
-                  colors={['#08d4c4', '#01ab9d']}
-                  style={styles.signIn}
-              >
-                  <Text style={[styles.textSign, {
-                      color:'#fff'
-                  }]}>Ingresar</Text>
-              </LinearGradient>
+                <LinearGradient
+                    colors={['#08d4c4', '#01ab9d']}
+                    style={styles.signIn}
+                >
+                    <Text style={[styles.textSign, {
+                        color:'#fff'
+                    }]}>Ingresar</Text>
+                </LinearGradient>
               </TouchableOpacity>
 
               <TouchableOpacity
-                  //onPress={/*() => navigation.navigate('SignUpScreen')*/}
+                  onPress={() => navigation.navigate('Register')}
                   style={[styles.signIn, {
                       borderColor: '#009387',
                       borderWidth: 1,
