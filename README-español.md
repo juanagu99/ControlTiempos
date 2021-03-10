@@ -11,10 +11,10 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 
 ### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
+_Debes de instalar el empaquetador de node js pero todas las instalaciones adicionales se recomiendan manejarlas con yarn_
 
 ```
-Da un ejemplo
+npm install
 ```
 
 ### Instalación 🔧
@@ -29,12 +29,6 @@ _Debes de ir al archivo .env y colocar el id de tu web client de google_
 
 ```
 50916202111-gd5edp39b38qgqpq5p4jpa56p5fdr0qg.apps.googleusercontent.com
-```
-
-_Debes de instalar el empaquetador de node js pero todas las instalaciones de los complementos se debe manejar con yarn_
-
-```
-npm install
 ```
 
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
