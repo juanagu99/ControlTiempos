@@ -10,12 +10,9 @@ import {
   Platform,
   StyleSheet ,
   StatusBar,
+  Image,
   Alert
 } from 'react-native';
-import Social from './components/social'
-import Footer from './components/footer'
-import Inputs from './components/inputs'
-import theme from '../../constants/Themes'
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -26,6 +23,8 @@ import Loading from '../loading'
 import auth from '@react-native-firebase/auth'; //Firebase Authentication Service
 import { GoogleSignin } from '@react-native-community/google-signin';
 import { useTheme } from 'react-native-paper';
+import SocialButton from '../../components/social';
+
 /**dat
  * Declaration of constant
  */
@@ -103,51 +102,26 @@ export default ({navigation}) =>  {
     setPressSecurityText(!PressSecurityText);
   }
 
-  const handleValidEmail = (val) => {
-    try{
-      const validation= validationEmail(val);
-      if(!validation){
-        setValidFormatEmail(false);
-      }else{
-        setValidFormatEmail(true);
-      }
-    }catch(error){
-      setValidFormatEmail(false);
-    }
-  }
-
   return ( 
     !PressSignIn ? (
-      /*
-        <KeyboardAvoidingView style={styles.container} behavior="height" enabled>        
-          <View center style={{ marginTop: theme.SIZES.BASE * 1.875, marginBottom: height * 0.1 }}>            
-            <Social/>
-          </View>   
-          <View flex={2} center>
-            <Inputs/>  
-            <Footer/>
-          </View>       
-        </KeyboardAvoidingView>*/
-    <View style={styles.container}>
-        <StatusBar backgroundColor='#009387' barStyle="light-content"/>
+      <View style={styles.container}>
+                
         <View style={styles.header}>
-          <Text style={styles.text_header}>Control de tiempos</Text>
+          <Image source={require("../../../../Logo.png")}>
+          </Image>
         </View>
-        <Animatable.View 
-          animation="fadeInUpBig"
+        
+        <Animatable.View animation="fadeInUpBig"
           style={[styles.footer, {
               backgroundColor: colors.background
           }]}
         >
-          <Text style={[styles.text_footer, {
-              color: colors.text
-          }]}>Usuario</Text>
+          <Text style={[styles.text_footer,{color: colors.text}]}>Usuario</Text>
+
           <View style={styles.action}>
-              <FontAwesome 
-                  name="user-o"
-                  color={colors.text}
-                  size={20}
-              />
+
+              <FontAwesome name="user-o" color={colors.text} size={20}/>
+
               <TextInput 
                   placeholder="Usuario@dominio.com"
                   placeholderTextColor="#666666"
@@ -156,10 +130,9 @@ export default ({navigation}) =>  {
                   }]}
                   autoCapitalize="none"
                   onChangeText={(val) => handleChangeEmail(val)}
-                  onEndEditing={(e)=>handleValidEmail(e.nativeEvent.text)}
               />
                         
-              { ValidFormatEmail ? 
+              { validationEmail(Email) ? 
               <Animatable.View
                   animation="bounceIn"
               >
@@ -169,27 +142,29 @@ export default ({navigation}) =>  {
                       size={20}
                   />
               </Animatable.View>
-              : null
-             /* : <Animatable.View
-              animation="bounceIn"
-              >
-             <Feather 
-                  name="x-circle"
-                  color="#FA0000"
-                  size={20}
-              />
-              </Animatable.View>*/}
+              :  (
+                Email != "" ? 
+                  <Animatable.View
+                  animation="bounceIn"
+                  >
+                  <Feather 
+                    name="x-circle"
+                    color="#FFC04A"
+                    size={20}
+                  />
+                  </Animatable.View>    
+                : null
+                )  
+              }
+
           </View>
-          <Text style={[styles.text_footer, {
-              color: colors.text,
-              marginTop: 35
-          }]}>Contraseña</Text>
+          
+          <Text style={[styles.text_footer,{color: colors.text,marginTop: 35}]}>Contraseña</Text>
+
           <View style={styles.action}>
-              <Feather 
-                  name="lock"
-                  color={colors.text}
-                  size={20}
-              />
+
+              <Feather name="lock" color={colors.text} size={20}/>
+
               <TextInput 
                   placeholder="Contraseña"
                   placeholderTextColor="#666666"
@@ -218,51 +193,36 @@ export default ({navigation}) =>  {
                   }
               </TouchableOpacity>
           </View>        
+          
           <TouchableOpacity>
-              <Text style={{color: '#009387', marginTop:15}}>Recuperar contraseña</Text>
+              <Text style={{color: '#000000', marginTop:15}}>Recuperar contraseña</Text>
           </TouchableOpacity>
-          <View style={styles.button}>              
+          
+          <View style={styles.button}>
 
-              <TouchableOpacity
-                  style={styles.signIn}
-                  onPress={() => {OnPressSignIn()}}
-              >
-                <LinearGradient
-                    colors={['#08d4c4', '#01ab9d']}
-                    style={styles.signIn}
-                >
-                    <Text style={[styles.textSign, {
-                        color:'#fff'
-                    }]}>Ingresar</Text>
-                </LinearGradient>
-              </TouchableOpacity>
+            <SocialButton buttonTitle="Inicia sesión con Google"
+                btnType="google"
+                color={colors.background}
+                backgroundColor="#474056"
+                onPress={() => OnPressGoogle()}
+            />              
 
-              <TouchableOpacity
-                  onPress={() => navigation.navigate('Register')}
-                  style={[styles.signIn, {
-                      borderColor: '#009387',
-                      borderWidth: 1,
-                      marginTop: 15,
-                      marginBottom:100
-                  }]}
-              >
-                  <Text style={[styles.textSign, {
-                      color: '#009387'
-                  }]}>Registrarse</Text>
-              </TouchableOpacity>
+            <TouchableOpacity style={styles.signIn} onPress={() => {OnPressSignIn()}}>
+              <LinearGradient colors={['#757083', '#8A95A5']} style={styles.signIn}>
+                <Text style={[styles.textSign, {color:'#fff'}]}>Ingresar</Text>
+              </LinearGradient>
+            </TouchableOpacity>
 
-              <TouchableOpacity
-                  style={styles.signIn}
-                  onPress={ () => OnPressGoogle() }
-                >                           
-                    <FontAwesome 
-                        name="google"
-                        color="#009387"
-                        size={50}/>               
-              </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Register')}
+              style={[styles.signIn, {borderColor: '#474056', borderWidth: 1}]}
+            >
+              <Text style={[styles.textSign, {color: '#474056'}]}>Registrarse</Text>
+            </TouchableOpacity>
+              
           </View>
-      </Animatable.View>
-    </View>
+      
+        </Animatable.View>
+      </View>
     ) : ( <Loading/>)
   )
 }
@@ -270,13 +230,13 @@ export default ({navigation}) =>  {
 const styles = StyleSheet.create({
     container: {
       flex: 1, 
-      backgroundColor: '#009387'
+      backgroundColor: '#474056'
     },
     header: {
         flex: 1,
-        justifyContent: 'flex-end',
-        paddingHorizontal: 20,
-        paddingBottom: 50
+        flex:1,        
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     footer: {
         flex: 3,
@@ -328,7 +288,9 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 10
+        borderRadius: 10,              
+        marginTop: 10,
+        marginBottom: 5
     },
     textSign: {
         fontSize: 18,
